@@ -10,7 +10,7 @@
 <h3><a href="index.html">Home</a></h3>
 <h2>Meals</h2>
 <div title="добфвить еду"><a href="meals?action=add">Добавить еду</a></div>
-<table>
+<table class="table">
     <tr>
         <th>Дата</th>
         <th>Описание</th>
@@ -24,8 +24,9 @@
             <td><%=TimeUtil.format(meals.getDateTime())%></td>
             <td>${meals.description}</td>
             <td>${meals.calories}</td>
-            <td>edit</td>
-            <td>delete</td>
+            <td>редактировать</td>
+            <td>удалить</td>
+
     </c:forEach>
 </table>
 </body>
