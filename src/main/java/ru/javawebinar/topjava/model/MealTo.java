@@ -28,12 +28,12 @@ public class MealTo {
         this(null, dateTime,description,calories,excess);
     }
 
-    public Integer getId() {
-        return id;
-    }
-
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public boolean getExcess() {
