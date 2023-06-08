@@ -8,8 +8,7 @@
 </head>
 <body>
 <h3><a href="index.html">Home</a></h3>
-<h2>Meals</h2>
-<div title="добавить еду"><a href="meals?action=add">Добавить еду</a></div>
+<h2 class="title">Meals</h2>
 <table class="table">
     <tr>
         <th>Дата</th>
@@ -29,5 +28,7 @@
         <td title="удалить еду"><a href="meals?action=delete&id=${meals.id}">удалить</a></td>
         </c:forEach>
 </table>
+
+<div class="add-meal" title="добавить еду"><a href="meals?action=add">Добавить еду</a></div>
 </body>
 </html>
