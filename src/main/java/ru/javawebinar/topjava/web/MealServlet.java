@@ -21,7 +21,6 @@ public class MealServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         repository = new MemoryMealRepository();
-        MealsConstants.MEALS.forEach(meal -> repository.save(meal));
     }
 
 
@@ -29,10 +28,17 @@ public class MealServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.debug("redirect to meals");
         String action = request.getParameter("action");
-
-        request.setAttribute("meals", MealsUtil.mealsTo(repository.getAll(), MealsConstants.CALORIES_PER_DAY));
-        request.getRequestDispatcher("meals.jsp").forward(request, response);
-            
+        if (action == null) {
+            request.setAttribute("meals", MealsUtil.mealsTo(repository.getAll(), MealsConstants.CALORIES_PER_DAY));
+            request.getRequestDispatcher("meals.jsp").forward(request, response);
+        }
+        assert action != null;
+        if (action.equals("delete")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            log.info("delete id={}", id);
+            repository.delete(id);
+            response.sendRedirect("meals");
+        }
 
     }
 }

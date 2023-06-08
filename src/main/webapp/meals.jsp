@@ -9,7 +9,7 @@
 <body>
 <h3><a href="index.html">Home</a></h3>
 <h2>Meals</h2>
-<div title="добфвить еду"><a href="meals?action=add">Добавить еду</a></div>
+<div title="добавить еду"><a href="meals?action=add">Добавить еду</a></div>
 <table class="table">
     <tr>
         <th>Дата</th>
@@ -18,16 +18,16 @@
         <th></th>
         <th></th>
     </tr>
-    <c:forEach items="${meals}" var="meals">
-        <jsp:useBean id="meals" type="ru.javawebinar.topjava.model.MealTo"/>
-        <tr class=${meals.excess ? 'excess' : 'normal'}>
-            <td><%=TimeUtil.format(meals.getDateTime())%></td>
-            <td>${meals.description}</td>
-            <td>${meals.calories}</td>
-            <td>редактировать</td>
-            <td>удалить</td>
-
-    </c:forEach>
+    <c:forEach items="${requestScope.meals}" var="meals">
+    <jsp:useBean id="meals" type="ru.javawebinar.topjava.model.MealTo"/>
+    <tr class=${meals.excess ? 'excess' : 'normal'}>
+        <td><%=TimeUtil.format(meals.getDateTime())%>
+        </td>
+        <td>${meals.description}</td>
+        <td>${meals.calories}</td>
+        <td title="редактировать"><a href="meals?action=edit&id=${meals.id}">редактировать</a></td>
+        <td title="удалить еду"><a href="meals?action=delete&id=${meals.id}">удалить</a></td>
+        </c:forEach>
 </table>
 </body>
 </html>
